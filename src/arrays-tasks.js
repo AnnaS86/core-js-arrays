@@ -39,16 +39,13 @@ function getIntervalArray(/* start, end */) {
  */
 function sumArrays(arr1, arr2) {
   const maxLength = Math.max(arr1.length, arr2.length);
-  const result = [];
 
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < maxLength; i += 1) {
-    const value1 = arr1[i] || 0; // Если индекс выходит за пределы, использовать 0
-    const value2 = arr2[i] || 0; // Если индекс выходит за пределы, использовать 0
+  return Array.from({ length: maxLength }).reduce((result, _, i) => {
+    const value1 = arr1[i] || 0;
+    const value2 = arr2[i] || 0;
     result.push(value1 + value2);
-  }
-
-  return result;
+    return result;
+  }, []);
 }
 
 /**
